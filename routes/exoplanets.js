@@ -21,13 +21,13 @@ router.post('/add', (req, res, next) => {
 
 /*Function to respect written rules */
 
-function writtenRules(exoplanet){
+function checkWrittenRules(exoplanet){
   const exoplanetUpperCase = exoplanet.toUpperCase();
   if(exoplanet != exoplanetUpperCase){
-    throw 'Exoplanète en majuscule !'
+    return false;
   }
   else{
-    return 
+    return true;
   }
 
 }
@@ -47,4 +47,4 @@ router.get('/search', (req, res, next) => {
   });
 });
 
-module.exports = router;
+module.exports = { router, checkWrittenRules }
