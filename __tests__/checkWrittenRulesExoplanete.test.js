@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const exoplanet = require('../routes/exoplanets')
 
 /*Test about UpperCase input false situation */
