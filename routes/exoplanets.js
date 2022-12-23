@@ -4,11 +4,13 @@ const router = express.Router();
 const Exoplanet = require('../models/Exoplanet.js');
 
 /* GET exoplanets index. */
+// eslint-disable-next-line no-unused-vars
 router.get('/', (req, res, next) => {
   res.render('exoplanets/index', { exoplanetsTable: Exoplanet.list() });
 });
 
 /* POST add exoplanet. */
+// eslint-disable-next-line no-unused-vars
 router.post('/add', (req, res, next) => {
   console.log('POST ADD EXOPLANET');
   Exoplanet.save({
@@ -33,6 +35,7 @@ function checkWrittenRules(exoplanet){
 }
 
 /* GET search exoplanet. */
+// eslint-disable-next-line no-unused-vars
 router.get('/search', (req, res, next) => {
   let exoplanetsTable = null;
   let min3Char = false;
