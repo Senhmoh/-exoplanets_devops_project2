@@ -7,4 +7,5 @@ const exoplanet = require('../routes/exoplanets')
     })
 });
 
+
 module.exports;
