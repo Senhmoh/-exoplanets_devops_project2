@@ -19,6 +19,19 @@ router.post('/add', (req, res, next) => {
   res.redirect('/exoplanets');
 });
 
+/*Function to respect written rules */
+
+function writtenRules(exoplanet){
+  const exoplanetUpperCase = exoplanet.toUpperCase();
+  if(exoplanet != exoplanetUpperCase){
+    throw 'Exoplanète en majuscule !'
+  }
+  else{
+    return 
+  }
+
+}
+
 /* GET search exoplanet. */
 router.get('/search', (req, res, next) => {
   let exoplanetsTable = null;
