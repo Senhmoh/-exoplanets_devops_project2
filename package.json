@@ -10,7 +10,8 @@
         "lint:fix": "eslint --fix .",
         "code:fix": "prettier --write . && eslint --fix .",
         "commit": "cz",
-        "test": "jest --coverage",
+        "test" : "jest",
+        "test:coverage": "jest --coverage",
         "test:watch": "jest --watchAll"
     },
     "dependencies": {
@@ -25,6 +26,7 @@
     "devDependencies": {
         "cz-conventional-changelog": "^3.3.0",
         "eslint": "^8.27.0",
+        "eslint-config-prettier": "8.5.0",
         "eslint-config-standard": "^17.0.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-n": "^15.5.1",
