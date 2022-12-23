@@ -2,9 +2,7 @@ name: Devop-Projet2
 on:
     pull_request:
         branches:
-            - main
-permissions:
-    contents: write
+            [ main ]
 jobs:
     check_code:
         runs-on: ubuntu-latest
@@ -12,7 +10,9 @@ jobs:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
                  with:
-                    node-version: 19.0.1
+                    node-version: 16.14
             - run: npm ci
+            - run: npm lint
+            - run: npm prettier
             - run: npm test 
             - run: npm run build
