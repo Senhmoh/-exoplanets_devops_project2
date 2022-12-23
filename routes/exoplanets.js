@@ -19,6 +19,18 @@ router.post('/add', (req, res, next) => {
   res.redirect('/exoplanets');
 });
 
+/*Function to respect written rules */
+
+function checkWrittenRules(exoplanet){
+  const validateur = /[^A-Z0-9.-]/;
+  if(validateur.test(exoplanet)){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 /* GET search exoplanet. */
 router.get('/search', (req, res, next) => {
   let exoplanetsTable = null;
@@ -34,4 +46,4 @@ router.get('/search', (req, res, next) => {
   });
 });
 
-module.exports = router;
+module.exports = { router, checkWrittenRules }
