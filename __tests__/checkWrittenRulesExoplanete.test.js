@@ -1,14 +1,26 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-undef */
 const exoplanet = require('../routes/exoplanets')
 
-/*Test about UpperCase input false situation */
 describe('', () => {
-    it('should return false for lower characters', () => {
-        expect(exoplanet.checkWrittenRules('Exoplanete')).toBe(false)
+    it('should return true for upperCase characters', () => {
+        expect(exoplanet.checkWrittenRules('EXOPLANETE')).toBe(true)
+    })
+    it('should return false for lowerCase characters', () => {
+        expect(exoplanet.checkWrittenRules('exoplanete')).toBe(false)
+    })
+    it('should return true for allowed characters', () => {
+        expect(exoplanet.checkWrittenRules('EXO.P-LANETE')).toBe(true)
     })
 
-    it('should return true for upper characters', () => {
-        expect(exoplanet.checkWrittenRules('EXOPLANETE')).toBe(true)
+    it('should return false for allowed characters', () => {
+        expect(exoplanet.checkWrittenRules('EXO$P£LANETE')).toBe(false)
+    })
+
+    it('should return false for forbiden sentance', () => {
+        expect(exoplanet.checkWrittenRules('Trappiste$****01****-00')).toBe(
+            false
+        )
     })
 })
 

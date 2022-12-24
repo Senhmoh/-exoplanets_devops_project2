@@ -13,22 +13,31 @@ router.get('/', (req, res, next) => {
 // eslint-disable-next-line no-unused-vars
 router.post('/add', (req, res, next) => {
     console.log('POST ADD EXOPLANET')
-    Exoplanet.save({
-        uniqueName: req.body.uniqueNameExoplanet,
-        hClass: req.body.hClassExoplanet,
-        discoveryYear: req.body.discoveryYearExoplanet,
-    })
+
+    if (checkWrittenRules(req.body.uniqueNameExoplanet)) {
+        Exoplanet.save({
+            uniqueName: req.body.uniqueNameExoplanet,
+            hClass: req.body.hClassExoplanet,
+            discoveryYear: req.body.discoveryYearExoplanet,
+        })
+    } else {
+        throw 'Erreur dencodage'
+    }
     res.redirect('/exoplanets')
 })
 
 /*Function to respect written rules */
 
 function checkWrittenRules(exoplanet) {
-    const exoplanetUpperCase = exoplanet.toUpperCase()
-    if (exoplanet != exoplanetUpperCase) {
+    const validateur = /[^A-Z0-9.-]/
+    if (validateur.test(exoplanet)) {
         return false
     } else {
-        return true
+        if (exoplanet === 'Trappiste$****01****-00') {
+            return false
+        } else {
+            return true
+        }
     }
 }
 
